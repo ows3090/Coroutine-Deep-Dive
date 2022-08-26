@@ -2,8 +2,8 @@ package flow.operator
 
 import kotlinx.coroutines.flow.asFlow
 import kotlinx.coroutines.flow.count
+import kotlinx.coroutines.launch
 import kotlinx.coroutines.runBlocking
-
 
 fun main() = runBlocking {
     val counter = (1..10)
