@@ -20,7 +20,10 @@ fun simple2(): Flow<Int> = flow {// 플로우 내에서는 컨텍스트를 바�
 
 
 fun main(): Unit = runBlocking {
-    simple2()
-        .collect { value -> log("$value 를 받음") }
+    launch(Dispatchers.IO) {
+        simple2()
+            .collect { value -> log("$value 를 받음") }
+    }
+
 }
 
