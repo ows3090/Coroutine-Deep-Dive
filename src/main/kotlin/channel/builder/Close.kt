@@ -1,4 +1,4 @@
-package channel
+package channel.builder
 
 import kotlinx.coroutines.channels.Channel
 import kotlinx.coroutines.launch

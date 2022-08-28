@@ -1,9 +1,6 @@
 package basic.dispatcher
 
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.newSingleThreadContext
-import kotlinx.coroutines.runBlocking
+import kotlinx.coroutines.*
 
 fun main() = runBlocking<Unit> {
     launch {
@@ -12,6 +9,9 @@ fun main() = runBlocking<Unit> {
 
     launch(Dispatchers.Default) {
         println("Default / ${Thread.currentThread().name}")
+        withContext(Dispatchers.IO){
+            println("Default IO / ${Thread.currentThread().name}")
+        }
     }
 
     launch(Dispatchers.IO) {
@@ -24,5 +24,9 @@ fun main() = runBlocking<Unit> {
 
     launch(newSingleThreadContext("wonseok")) {
         println("newSingleThreadContext / ${Thread.currentThread().name}")
+    }
+
+    GlobalScope.launch {
+        println("GlobalScope / ${Thread.currentThread().name}")
     }
 }
